@@ -1,0 +1,57 @@
+services:
+  - type: web
+    name: cpi-api
+    runtime: python
+    region: singapore
+    plan: starter
+    rootDir: backend
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn app.main:app --host 0.0.0.0 --port $PORT
+    disk:
+      name: cpi-data
+      mountPath: /var/data
+      sizeGB: 1
+    envVars:
+      - key: DATA_DIR
+        value: /var/data/forecasts
+      - key: ADMIN_TOKEN
+        sync: false
+      - key: FRONTEND_ORIGIN
+        sync: false
+      - key: DGBAS_URL
+        value: https://ws.dgbas.gov.tw/001/Upload/461/relfile/11525/230543/pr0101a3m.xml
+      - key: KEEP_RUNS
+        value: 12
+
+  - type: cron
+    name: cpi-monthly-recompute
+    runtime: python
+    region: singapore
+    rootDir: backend
+    schedule: "0 19 7 * *"
+    buildCommand: pip install requests
+    startCommand: python scripts/trigger_remote.py
+    envVars:
+      - key: WEB_URL
+        sync: false
+      - key: ADMIN_TOKEN
+        sync: false
+
+  - type: web
+    name: cpi-frontend
+    runtime: static
+    rootDir: frontend
+    buildCommand: npm ci && npm run build
+    staticPublishPath: dist
+    pullRequestPreviewsEnabled: true
+    envVars:
+      - key: VITE_API_BASE_URL
+        sync: false
+    routes:
+      - type: rewrite
+        source: /*
+        destination: /index.html
+    headers:
+      - path: /assets/*
+        name: Cache-Control
+        value: public, max-age=31536000, immutable

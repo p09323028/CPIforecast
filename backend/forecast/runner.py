@@ -131,6 +131,20 @@ def run_full(
             storage.write_category_outputs(
                 base_dir, run_id, cat, monthly_df, yoy_df, paths, rolling_yoy_df=rolling_df
             )
+            # 預存「下個月上漲機率」，讓線上 API 不必再讀 paths.parquet
+            # （儀表板 14 類別併發讀 parquet 會把免費機記憶體打爆）。
+            prob_rise_next_month = None
+            last_actual_value = None
+            next_forecast_date = None
+            try:
+                last_actual_value = float(series.dropna().iloc[-1])
+                first_forecast = paths.iloc[0]
+                next_forecast_date = paths.index.min().strftime("%Y-%m-%d")
+                prob_rise_next_month = float(
+                    (first_forecast > last_actual_value).mean()
+                )
+            except Exception:
+                log.exception("prob_rise_next_month 計算失敗：%s", cat)
             per_category[cat] = {
                 "status": "ok",
                 "order": list(fit.order),
@@ -141,6 +155,9 @@ def run_full(
                 "forecast_months": int(paths.shape[0]),
                 "forecast_start": paths.index.min().strftime("%Y-%m-%d"),
                 "forecast_end": paths.index.max().strftime("%Y-%m-%d"),
+                "prob_rise_next_month": prob_rise_next_month,
+                "last_actual_value": last_actual_value,
+                "next_forecast_date": next_forecast_date,
                 "rolling": rolling_info,
             }
         except Exception as exc:

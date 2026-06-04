@@ -45,7 +45,10 @@
         "start_end_date": "2025-12-01",
         "end_end_date": "2026-11-01",
         "n_iterations": 12
-      }
+      },
+      "prob_rise_next_month": 0.698,
+      "last_actual_value": 117.17,
+      "next_forecast_date": "2026-05-01"
     },
     "FAFH": {
       "status": "ok",
@@ -73,7 +76,10 @@
         "start_end_date": "2025-12-01",
         "end_end_date": "2026-11-01",
         "n_iterations": 12
-      }
+      },
+      "prob_rise_next_month": 0.9895,
+      "last_actual_value": 120.46,
+      "next_forecast_date": "2026-05-01"
     },
     "meats": {
       "status": "ok",
@@ -101,7 +107,10 @@
         "start_end_date": "2025-12-01",
         "end_end_date": "2026-11-01",
         "n_iterations": 12
-      }
+      },
+      "prob_rise_next_month": 0.4843,
+      "last_actual_value": 122.64,
+      "next_forecast_date": "2026-05-01"
     },
     "pork": {
       "status": "ok",
@@ -129,7 +138,10 @@
         "start_end_date": "2025-12-01",
         "end_end_date": "2026-11-01",
         "n_iterations": 12
-      }
+      },
+      "prob_rise_next_month": 0.5887,
+      "last_actual_value": 129.49,
+      "next_forecast_date": "2026-05-01"
     },
     "beef": {
       "status": "ok",
@@ -157,7 +169,10 @@
         "start_end_date": "2025-12-01",
         "end_end_date": "2026-11-01",
         "n_iterations": 12
-      }
+      },
+      "prob_rise_next_month": 0.6782,
+      "last_actual_value": 124.8,
+      "next_forecast_date": "2026-05-01"
     },
     "poultry": {
       "status": "ok",
@@ -185,7 +200,10 @@
         "start_end_date": "2025-12-01",
         "end_end_date": "2026-11-01",
         "n_iterations": 12
-      }
+      },
+      "prob_rise_next_month": 0.4965,
+      "last_actual_value": 115.15,
+      "next_forecast_date": "2026-05-01"
     },
     "seafood": {
       "status": "ok",
@@ -213,7 +231,10 @@
         "start_end_date": "2025-12-01",
         "end_end_date": "2026-11-01",
         "n_iterations": 12
-      }
+      },
+      "prob_rise_next_month": 0.5528,
+      "last_actual_value": 119.55,
+      "next_forecast_date": "2026-05-01"
     },
     "eggs": {
       "status": "ok",
@@ -241,7 +262,10 @@
         "start_end_date": "2025-12-01",
         "end_end_date": "2026-11-01",
         "n_iterations": 12
-      }
+      },
+      "prob_rise_next_month": 0.1463,
+      "last_actual_value": 120.9,
+      "next_forecast_date": "2026-05-01"
     },
     "egg": {
       "status": "ok",
@@ -269,7 +293,10 @@
         "start_end_date": "2025-12-01",
         "end_end_date": "2026-11-01",
         "n_iterations": 12
-      }
+      },
+      "prob_rise_next_month": 0.1346,
+      "last_actual_value": 119.67,
+      "next_forecast_date": "2026-05-01"
     },
     "dairy": {
       "status": "ok",
@@ -297,7 +324,10 @@
         "start_end_date": "2025-12-01",
         "end_end_date": "2026-11-01",
         "n_iterations": 12
-      }
+      },
+      "prob_rise_next_month": 0.4782,
+      "last_actual_value": 104.15,
+      "next_forecast_date": "2026-05-01"
     },
     "milk": {
       "status": "ok",
@@ -325,7 +355,10 @@
         "start_end_date": "2025-12-01",
         "end_end_date": "2026-11-01",
         "n_iterations": 12
-      }
+      },
+      "prob_rise_next_month": 0.5966,
+      "last_actual_value": 101.73,
+      "next_forecast_date": "2026-05-01"
     },
     "vegetable": {
       "status": "ok",
@@ -353,7 +386,10 @@
         "start_end_date": "2025-12-01",
         "end_end_date": "2026-11-01",
         "n_iterations": 12
-      }
+      },
+      "prob_rise_next_month": 0.6583,
+      "last_actual_value": 100.4,
+      "next_forecast_date": "2026-05-01"
     },
     "fruit": {
       "status": "ok",
@@ -381,7 +417,10 @@
         "start_end_date": "2025-12-01",
         "end_end_date": "2026-11-01",
         "n_iterations": 12
-      }
+      },
+      "prob_rise_next_month": 0.5917,
+      "last_actual_value": 117.05,
+      "next_forecast_date": "2026-05-01"
     },
     "oils": {
       "status": "ok",
@@ -409,7 +448,10 @@
         "start_end_date": "2025-12-01",
         "end_end_date": "2026-11-01",
         "n_iterations": 12
-      }
+      },
+      "prob_rise_next_month": 0.5268,
+      "last_actual_value": 119.23,
+      "next_forecast_date": "2026-05-01"
     }
   }
 }

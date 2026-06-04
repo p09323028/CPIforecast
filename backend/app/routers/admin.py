@@ -8,7 +8,6 @@ from fastapi import APIRouter, BackgroundTasks, Depends, HTTPException
 
 from forecast import storage
 from forecast.categories import english_names
-from forecast.runner import run_full
 
 from ..config import settings
 from ..deps import verify_admin_token
@@ -22,6 +21,10 @@ router = APIRouter(
 
 
 def _execute(run_id: str) -> None:
+    # 延遲匯入：pmdarima/statsmodels 很吃記憶體，只有真的要跑預測時才載入。
+    # 線上免費機只負責送檔案、不訓練模型，啟動時不該載入這些（512MB 會 OOM）。
+    from forecast.runner import run_full
+
     total = len(english_names())
 
     def cb(idx: int, total_: int, cat: str) -> None:

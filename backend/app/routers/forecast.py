@@ -48,20 +48,11 @@ def get_forecast(run_id: str, category: str) -> dict:
         for d, v in zip(history["date"].tail(60), history[category].tail(60))
     ]
 
-    # 從 10,000 條模擬路徑算「下個月上漲機率」
-    prob_rise_next_month = None
-    last_actual_value = None
-    next_forecast_date = None
-    paths_path = cdir / storage.PATHS_PARQUET
-    if paths_path.exists() and not history.empty:
-        try:
-            paths_df = pd.read_parquet(paths_path)
-            last_actual_value = float(history[category].iloc[-1])
-            first_forecast = paths_df.iloc[0]
-            next_forecast_date = paths_df.index.min().strftime("%Y-%m-%d")
-            prob_rise_next_month = float((first_forecast > last_actual_value).mean())
-        except Exception:
-            prob_rise_next_month = None
+    # 「下個月上漲機率」於產生時就預存在 manifest，這裡直接讀，
+    # 不再開啟 paths.parquet（避免儀表板併發讀檔把免費機記憶體打爆）。
+    prob_rise_next_month = cat_info.get("prob_rise_next_month")
+    last_actual_value = cat_info.get("last_actual_value")
+    next_forecast_date = cat_info.get("next_forecast_date")
 
     monthly_payload = []
     for _, row in monthly_df.iterrows():

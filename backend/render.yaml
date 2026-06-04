@@ -12,6 +12,11 @@ services:
     buildCommand: pip install -r requirements.txt
     startCommand: uvicorn app.main:app --host 0.0.0.0 --port $PORT
     envVars:
+      # 釘 Python 3.11（對齊 Dockerfile）。Render 原生 runtime 預設為 3.13，
+      # 但 numpy 1.26 / scipy 1.13 / pmdarima 2.0.4 在 3.13 無預編譯 wheel，
+      # 會改從原始碼編譯而卡在 Deploying。
+      - key: PYTHON_VERSION
+        value: 3.11.9
       - key: ADMIN_TOKEN
         sync: false
       - key: FRONTEND_ORIGIN

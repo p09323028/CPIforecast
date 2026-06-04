@@ -19,8 +19,9 @@ services:
         value: 3.11.9
       - key: ADMIN_TOKEN
         sync: false
+      # 前端網址：用於 CORS 白名單（公開網址，非機密，直接寫死）
       - key: FRONTEND_ORIGIN
-        sync: false
+        value: https://cpi-frontend.onrender.com
       - key: DGBAS_URL
         value: https://ws.dgbas.gov.tw/001/Upload/461/relfile/11525/230543/pr0101a3m.xml
       - key: KEEP_RUNS
@@ -35,8 +36,9 @@ services:
     staticPublishPath: dist
     pullRequestPreviewsEnabled: true
     envVars:
+      # 後端 API 網址：建置期編進前端 bundle（公開網址，非機密，直接寫死）
       - key: VITE_API_BASE_URL
-        sync: false
+        value: https://cpi-api.onrender.com
     routes:
       - type: rewrite
         source: /*

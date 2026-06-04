@@ -20,6 +20,11 @@ from .categories import DISPLAY_ZH, english_names
 
 log = logging.getLogger(__name__)
 
+# 子項目（隸屬於上方的大類）在「品項」欄縮排一個全形空格，呈現層級：
+#   肉類 → 豬肉 / 牛肉 / 雞肉、蛋類 → 雞蛋、乳類 → 鮮乳
+SUB_ITEMS = {"pork", "beef", "poultry", "egg", "milk"}
+_INDENT = "　"  # 全形空格
+
 
 def _mom(s: pd.Series, date: pd.Timestamp) -> Optional[float]:
     """本月對上月的 % 變動率。"""
@@ -124,9 +129,12 @@ def build_report_df(
     for en in english_names():
         s = raw[en].dropna()
         lo, mid, hi = _read_latest_rolling(base_dir, run_id, en, data_end)
+        name = DISPLAY_ZH[en]
+        if en in SUB_ITEMS:
+            name = _INDENT + name
         rows.append(
             {
-                "品項": DISPLAY_ZH[en],
+                "品項": name,
                 f"月變動率% ({data_end.month}月)": _mom(s, data_end),
                 f"年變動率% ({data_end.month}月)": _yoy(s, data_end),
                 f"年初至今平均變動率% ({forecast_year})": _ytd_avg(s, data_end),
@@ -214,6 +222,25 @@ def write_xlsx(
                 cell.font = body_font
             cell.border = border
         ws.row_dimensions[r_idx].height = 22
+
+    # === 歷史欄與預測欄之間的虛線分隔 ===
+    # 在第一個「預測…」欄的左側畫虛線，把歷史/實際欄與預測欄區隔開。
+    sep_col = next(
+        (i for i, col in enumerate(df.columns, start=1) if str(col).startswith("預測")),
+        None,
+    )
+    if sep_col is not None:
+        dashed = Side(style="mediumDashed", color="475569")
+        last_row = 2 + len(df)  # 表頭(第 2 列) + 14 列資料
+        for r in range(2, last_row + 1):
+            cell = ws.cell(row=r, column=sep_col)
+            prev = cell.border
+            cell.border = Border(
+                left=dashed,
+                right=prev.right,
+                top=prev.top,
+                bottom=prev.bottom,
+            )
 
     # === 欄寬 ===
     ws.column_dimensions["A"].width = 14

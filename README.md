@@ -118,25 +118,41 @@ website_paths = pd.read_parquet("Food_paths_<run_id>.parquet")
 # sim 與 website_paths 應 element-wise 等值（取至小數第 6 位）
 ```
 
-## Render 部署
+## Render 部署（免費方案）
 
-倉庫包含 `backend/render.yaml`，定義三個服務：
+倉庫包含 `backend/render.yaml`，定義兩個服務：
 
-1. **cpi-api**（FastAPI Web Service）— 掛載 1 GB persistent disk 於 `/var/data`
-2. **cpi-monthly-recompute**（Cron Job）— 每月 7 號 19:00 UTC（台北 8 號 03:00）自動觸發
-3. **cpi-frontend**（Static Site）— 由 `frontend/` 編譯出 `dist/`
+1. **cpi-api**（FastAPI Web Service，`plan: free`）— 不在雲端重算，只把 repo 內 `backend/data/forecasts` 的預測結果送出去
+2. **cpi-frontend**（Static Site，免費、不休眠）— 由 `frontend/` 編譯出 `dist/`
+
+> **為什麼把預測資料打包進 repo？** Render 免費 Web Service 不支援持久磁碟、512MB RAM 跑 10,000 次模擬會 OOM、Cron Job 也非免費。因為預測一個月才更新一次，改採「本機跑好 → 結果進 git → 免費後端只讀檔」最省事。圖表資料只有 ~142KB，重量級的 `paths.parquet` 才是大宗。
 
 部署步驟：
 
-1. 推到 GitHub
-2. Render → New → Blueprint，選你的 repo
-3. 三個服務需手動填入的環境變數：
-   - `cpi-api`：`ADMIN_TOKEN`（≥32 字元）、`FRONTEND_ORIGIN`（前端網址）
-   - `cpi-monthly-recompute`：`WEB_URL`（後端網址，如 `https://cpi-api.onrender.com`）、`ADMIN_TOKEN`
-   - `cpi-frontend`：`VITE_API_BASE_URL`（後端網址）
-4. 第一次部署完成後，連到前端 → 管理頁 → 觸發第一次預測
+1. 把整個專案推到 GitHub（`.gitignore` 已擋掉 `.env`、`node_modules`、`.venv`，但**保留** `backend/data/forecasts` 預測結果）
+2. Render → New → Blueprint，選你的 repo（會讀 `backend/render.yaml`）
+3. 第一次建立後取得兩個網址，回填這些環境變數並重新部署：
+   - `cpi-api`：`ADMIN_TOKEN`（≥32 字元隨機字串）、`FRONTEND_ORIGIN`（前端網址，如 `https://cpi-frontend.onrender.com`）
+   - `cpi-frontend`：`VITE_API_BASE_URL`（後端網址，如 `https://cpi-api.onrender.com`）
+4. 完成後前端即對外開放，任何人可查詢。
 
-> Render Free / Starter 方案的 Web Service 在閒置時可能會休眠；觸發預測前可先連到首頁喚醒它。
+> **冷啟動**：免費後端閒置 15 分鐘會休眠，下次查詢需約 30–60 秒喚醒（只是讀檔，不重算）；前端靜態站不休眠。
+> **線上 Admin 觸發頁勿用**：免費機重算會 OOM 且結果不持久。更新預測請用下方本機流程。
+
+## 每月更新預測（取代雲端 Cron）
+
+```powershell
+cd backend
+.\.venv\Scripts\Activate.ps1
+python scripts/seed_local_run.py          # 抓最新 CPI、重跑預測（約 6–9 分鐘）
+
+# 回到 repo 根目錄，提交新資料
+git add backend/data/forecasts
+git commit -m "更新預測資料 <年月>"
+git push                                   # Render 偵測到 push 會自動重新部署
+```
+
+> 每次 run 約 107 MB（多為 `paths.parquet`），會累積在 git 歷史。若日後在意 repo 體積，可改用 Git LFS 管理 `*.parquet`，或在 `.gitignore` 排除 parquet（代價：失去「下個月上漲機率」數字與 parquet 下載）。
 
 ## 邊界情境
 

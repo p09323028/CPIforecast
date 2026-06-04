@@ -2,6 +2,8 @@ __pycache__/
 *.pyc
 .venv/
 .env
-data/
+# 忽略 data/ 內其他暫存，但放行 forecasts 預測結果（要進 repo 供 Render 免費後端讀取）
+data/*
+!data/forecasts/
 *.log
 .pytest_cache/

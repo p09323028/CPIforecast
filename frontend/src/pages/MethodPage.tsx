@@ -8,7 +8,7 @@ export default function MethodPage() {
       <Hero />
       <Chapter num="01" title="為什麼要預測「年度變動率」">
         <P>
-          消費者物價指數（CPI）是觀察民生物價變動的重要統計，其中食物類價格
+          消費者物價指數（Consumer Price Index, CPI）是觀察民生物價變動的重要統計，其中食物類價格
           更直接影響家計支出、通膨感受與政策溝通。一般新聞或分析常關注
           「當月年增率」，亦即「本月指數對去年同月指數」的變動。
         </P>
@@ -35,7 +35,7 @@ export default function MethodPage() {
         </P>
       </Chapter>
 
-      <Chapter num="02" title="為什麼要逐月推進 end_date">
+      <Chapter num="02" title="為什麼要逐月推進?">
         <P>
           年初時，十二個月中多數資料尚未公布，預測不確定性自然較高；隨著
           月份推進，已知資料逐月增加，剩餘未知月份減少，
@@ -59,7 +59,7 @@ export default function MethodPage() {
         <P>再以前一年實際年平均為基期，得到逐月推進的年變動率預測：</P>
         <TeXBlock>{String.raw`\widehat{\Delta I}_{t \mid T} \;=\; \frac{\hat{\bar{I}}_{t \mid T} - \bar{I}_{t-1}}{\bar{I}_{t-1}} \times 100\%`}</TeXBlock>
         <P>
-          因此，本平台對每一個類別都會做共 12 個 end_date 的滾動預測
+          因此，本平台對每一個類別都會做共 12 個月的滾動預測
           （自前一年 12 月起至本年 11 月），各使用該時點之前的近 12 年歷史
           資料重新配適模型。「年度 YoY 滾動預測」分頁中，每一個 X 軸點都
           對應一個獨立模型的結果。
@@ -70,8 +70,8 @@ export default function MethodPage() {
         <Sub>3.1　資料來源</Sub>
         <P>
           行政院主計總處{" "}
-          <Link href="https://data.gov.tw/dataset/6019">dataset 6019</Link>
-          （消費者物價指數月資料 XML），基期民國 110 年=100。
+          消費者物價指數月資料
+          （<Link href="https://data.gov.tw/dataset/6019">dataset 6019</Link>），基期民國 110 年=100。
         </P>
 
         <Sub>3.2　訓練窗口</Sub>
@@ -137,16 +137,9 @@ export default function MethodPage() {
         <TeXBlock>{String.raw`P_{\uparrow} \;=\; \frac{1}{S}\sum_{s=1}^{S} \mathbf{1}\!\left(\, \hat{I}^{(s)}_{t,\,m+1} \;>\; I_{t,m} \,\right)`}</TeXBlock>
         <Sub>4.4　月報 xlsx 下載</Sub>
         <P>
-          仿 USDA TB-1957 表格，含 14 類別的月變動率、年變動率、年初至今
+          參考 USDA Food Price Outlook 每月報表，含 14 類別的月變動率、年變動率、年初至今
           平均、歷年年度變動率與當年度 95% 預測區間，可直接用於對外溝通或
           內部報告。
-        </P>
-        <Sub>4.5　原始輸出</Sub>
-        <P>
-          每次 run 皆寫入 <Code>raw_cpi.csv</Code>、月度分位數 CSV、滾動 YoY
-          CSV、10,000 條路徑 Parquet，並在 manifest 記錄 <Code>order</Code>、
-          <Code>seasonal_order</Code>、<Code>BIC</Code>，可用 Jupyter Notebook
-          逐項比對重現。
         </P>
       </Chapter>
 
@@ -170,10 +163,6 @@ export default function MethodPage() {
         <P>
           「上漲機率」與「中位數」並非確定預測，僅代表在給定模型與假設下的
           條件機率與位置統計。
-        </P>
-        <P>
-          主計總處 dataset 6019 月資料約每月 5 日左右更新；本平台排程於每月
-          7 日 19:00 UTC（台北 8 日 03:00）自動重抓並重跑。
         </P>
       </Chapter>
 

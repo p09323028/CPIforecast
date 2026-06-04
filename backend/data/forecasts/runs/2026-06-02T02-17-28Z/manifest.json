@@ -1,0 +1,303 @@
+{
+  "run_id": "2026-06-02T02-17-28Z",
+  "started_at": "2026-06-02T02:17:28+00:00",
+  "finished_at": "2026-06-02T02:21:00+00:00",
+  "data_end_date": "2026-04-01",
+  "dgbas_url": "https://ws.dgbas.gov.tw/001/Upload/461/relfile/11525/230543/pr0101a3m.xml",
+  "fetched_at": "2026-06-02T02:17:32+00:00",
+  "seed": 1,
+  "n_sim": 20,
+  "repetitions": 10000,
+  "train_months": 144,
+  "library_versions": {
+    "pmdarima": "2.0.4",
+    "statsmodels": "0.14.6",
+    "numpy": "1.26.4",
+    "pandas": "2.2.3",
+    "scipy": "1.13.1"
+  },
+  "n_ok": 14,
+  "n_failed": 0,
+  "categories": {
+    "Food": {
+      "status": "ok",
+      "order": [
+        0,
+        1,
+        2
+      ],
+      "seasonal_order": [
+        1,
+        0,
+        1,
+        12
+      ],
+      "bic": 400.83787607279817,
+      "train_start": "2014-05-01",
+      "train_end": "2026-04-01",
+      "forecast_months": 20,
+      "forecast_start": "2026-05-01",
+      "forecast_end": "2027-12-01"
+    },
+    "FAFH": {
+      "status": "ok",
+      "order": [
+        1,
+        2,
+        1
+      ],
+      "seasonal_order": [
+        1,
+        0,
+        1,
+        12
+      ],
+      "bic": -101.3347984603385,
+      "train_start": "2014-05-01",
+      "train_end": "2026-04-01",
+      "forecast_months": 20,
+      "forecast_start": "2026-05-01",
+      "forecast_end": "2027-12-01"
+    },
+    "meats": {
+      "status": "ok",
+      "order": [
+        0,
+        1,
+        1
+      ],
+      "seasonal_order": [
+        0,
+        0,
+        0,
+        12
+      ],
+      "bic": 298.441520868087,
+      "train_start": "2014-05-01",
+      "train_end": "2026-04-01",
+      "forecast_months": 20,
+      "forecast_start": "2026-05-01",
+      "forecast_end": "2027-12-01"
+    },
+    "pork": {
+      "status": "ok",
+      "order": [
+        0,
+        1,
+        0
+      ],
+      "seasonal_order": [
+        1,
+        0,
+        1,
+        12
+      ],
+      "bic": 461.45118904669073,
+      "train_start": "2014-05-01",
+      "train_end": "2026-04-01",
+      "forecast_months": 20,
+      "forecast_start": "2026-05-01",
+      "forecast_end": "2027-12-01"
+    },
+    "beef": {
+      "status": "ok",
+      "order": [
+        0,
+        1,
+        0
+      ],
+      "seasonal_order": [
+        0,
+        0,
+        0,
+        12
+      ],
+      "bic": 305.42197731983947,
+      "train_start": "2014-05-01",
+      "train_end": "2026-04-01",
+      "forecast_months": 20,
+      "forecast_start": "2026-05-01",
+      "forecast_end": "2027-12-01"
+    },
+    "poultry": {
+      "status": "ok",
+      "order": [
+        0,
+        1,
+        1
+      ],
+      "seasonal_order": [
+        0,
+        0,
+        0,
+        12
+      ],
+      "bic": 401.19297991039144,
+      "train_start": "2014-05-01",
+      "train_end": "2026-04-01",
+      "forecast_months": 20,
+      "forecast_start": "2026-05-01",
+      "forecast_end": "2027-12-01"
+    },
+    "seafood": {
+      "status": "ok",
+      "order": [
+        0,
+        1,
+        1
+      ],
+      "seasonal_order": [
+        1,
+        0,
+        1,
+        12
+      ],
+      "bic": 412.81948423681155,
+      "train_start": "2014-05-01",
+      "train_end": "2026-04-01",
+      "forecast_months": 20,
+      "forecast_start": "2026-05-01",
+      "forecast_end": "2027-12-01"
+    },
+    "eggs": {
+      "status": "ok",
+      "order": [
+        0,
+        1,
+        0
+      ],
+      "seasonal_order": [
+        1,
+        0,
+        1,
+        12
+      ],
+      "bic": 875.2173458420167,
+      "train_start": "2014-05-01",
+      "train_end": "2026-04-01",
+      "forecast_months": 20,
+      "forecast_start": "2026-05-01",
+      "forecast_end": "2027-12-01"
+    },
+    "egg": {
+      "status": "ok",
+      "order": [
+        0,
+        1,
+        0
+      ],
+      "seasonal_order": [
+        1,
+        0,
+        1,
+        12
+      ],
+      "bic": 927.059000136975,
+      "train_start": "2014-05-01",
+      "train_end": "2026-04-01",
+      "forecast_months": 20,
+      "forecast_start": "2026-05-01",
+      "forecast_end": "2027-12-01"
+    },
+    "dairy": {
+      "status": "ok",
+      "order": [
+        0,
+        1,
+        0
+      ],
+      "seasonal_order": [
+        1,
+        0,
+        0,
+        12
+      ],
+      "bic": 285.8492051982322,
+      "train_start": "2014-05-01",
+      "train_end": "2026-04-01",
+      "forecast_months": 20,
+      "forecast_start": "2026-05-01",
+      "forecast_end": "2027-12-01"
+    },
+    "milk": {
+      "status": "ok",
+      "order": [
+        0,
+        1,
+        0
+      ],
+      "seasonal_order": [
+        1,
+        0,
+        1,
+        12
+      ],
+      "bic": 459.12049087795356,
+      "train_start": "2014-05-01",
+      "train_end": "2026-04-01",
+      "forecast_months": 20,
+      "forecast_start": "2026-05-01",
+      "forecast_end": "2027-12-01"
+    },
+    "vegetable": {
+      "status": "ok",
+      "order": [
+        2,
+        1,
+        1
+      ],
+      "seasonal_order": [
+        1,
+        0,
+        1,
+        12
+      ],
+      "bic": 1060.7800303941362,
+      "train_start": "2014-05-01",
+      "train_end": "2026-04-01",
+      "forecast_months": 20,
+      "forecast_start": "2026-05-01",
+      "forecast_end": "2027-12-01"
+    },
+    "fruit": {
+      "status": "ok",
+      "order": [
+        0,
+        1,
+        1
+      ],
+      "seasonal_order": [
+        0,
+        0,
+        0,
+        12
+      ],
+      "bic": 875.0511867558063,
+      "train_start": "2014-05-01",
+      "train_end": "2026-04-01",
+      "forecast_months": 20,
+      "forecast_start": "2026-05-01",
+      "forecast_end": "2027-12-01"
+    },
+    "oils": {
+      "status": "ok",
+      "order": [
+        0,
+        1,
+        0
+      ],
+      "seasonal_order": [
+        1,
+        0,
+        1,
+        12
+      ],
+      "bic": 428.68526463119264,
+      "train_start": "2014-05-01",
+      "train_end": "2026-04-01",
+      "forecast_months": 20,
+      "forecast_start": "2026-05-01",
+      "forecast_end": "2027-12-01"
+    }
+  }
+}

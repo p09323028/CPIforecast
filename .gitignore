@@ -1,0 +1,27 @@
+# 機密（含 ADMIN_TOKEN 等，絕不上傳）
+.env
+.env.*
+!.env.example
+backend/.env
+frontend/.env
+
+# Python
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+
+# Node / 前端產物
+node_modules/
+frontend/dist/
+
+# OS / 編輯器
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# 注意：刻意「不」忽略 backend/data/forecasts
+# 預測結果（manifest/CSV/parquet）要進 repo，供 Render 免費後端讀取

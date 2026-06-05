@@ -152,6 +152,9 @@ git commit -m "更新預測資料 <年月>"
 git push                                   # Render 偵測到 push 會自動重新部署
 ```
 
+> **不用再改任何 URL**：資料來源為主計總處 SDMX API，`endTime` 由程式自動帶當年，每月重跑即抓最新。
+> **注意本機 `.env`**：若 `backend/.env` 殘留舊的 `DGBAS_URL=...`，會覆蓋自動組網址（抓到舊來源而失敗）。請把該行留空（`DGBAS_URL=`）。
+
 > 每次 run 約 107 MB（多為 `paths.parquet`），會累積在 git 歷史。若日後在意 repo 體積，可改用 Git LFS 管理 `*.parquet`，或在 `.gitignore` 排除 parquet（代價：失去「下個月上漲機率」數字與 parquet 下載）。
 
 ## 邊界情境

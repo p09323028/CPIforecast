@@ -47,7 +47,7 @@ def run_full(
     base_dir: str,
     run_id: str,
     *,
-    dgbas_url: str = data_mod.DEFAULT_URL,
+    dgbas_url: str = "",
     n_sim: int = model_mod.N_SIM,
     repetitions: int = model_mod.N_REPS,
     seed: int = model_mod.SEED,

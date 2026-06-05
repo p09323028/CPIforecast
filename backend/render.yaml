@@ -22,8 +22,9 @@ services:
       # 前端網址：用於 CORS 白名單（公開網址，非機密，直接寫死）
       - key: FRONTEND_ORIGIN
         value: https://cpi-frontend.onrender.com
+      # 留空＝自動組出最新 SDMX 查詢網址（dataset A030101025）。
       - key: DGBAS_URL
-        value: https://ws.dgbas.gov.tw/001/Upload/461/relfile/11525/230543/pr0101a3m.xml
+        value: ""
       - key: KEEP_RUNS
         value: 12
 

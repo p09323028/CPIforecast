@@ -36,6 +36,27 @@ DISPLAY_ZH: dict[str, str] = {
 }
 
 
+# 主計總處 SDMX API（dataset A030101025）的 fldid 代碼 → 英文名。
+# 用代碼對應比用中文品名穩健：SDMX 回傳的品名常有編碼問題，且代碼不會變。
+# 注意：必須與上面 CATEGORIES 的 14 個英文名完全一致。
+FLDID_TO_EN: dict[str, str] = {
+    "2": "Food",        # 一.食物類
+    "16": "meats",      # 2.肉類
+    "18": "pork",       # 11豬肉
+    "20": "beef",       # 13牛肉、牛內臟
+    "23": "poultry",    # 15雞肉
+    "29": "eggs",       # 4.蛋類
+    "30": "egg",        # 20雞蛋
+    "32": "seafood",    # 5.水產品
+    "59": "vegetable",  # 7.蔬菜
+    "113": "fruit",     # 9.水果
+    "141": "dairy",     # 11.乳類
+    "142": "milk",      # 121鮮奶
+    "146": "oils",      # 12.食用油
+    "179": "FAFH",      # 17.外食費
+}
+
+
 def english_names() -> list[str]:
     return list(CATEGORIES.values())
 

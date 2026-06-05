@@ -156,7 +156,7 @@ git push                                   # Render 偵測到 push 會自動重�
 
 ## 邊界情境
 
-- **DGBAS XML URL 變更**：改 `DGBAS_URL` 環境變數即可，不需重新部署。
+- **資料來源**：行政院主計總處 SDMX API（dataset `A030101025`，14 類別 fldid 定義於 `forecast/categories.py` 的 `FLDID_TO_EN`）。`DGBAS_URL` 留空時程式會自動組出含當年 `endTime` 的查詢網址，每月重跑即抓最新，不必手改；要覆蓋來源時才在 `DGBAS_URL` 填整段 SDMX URL。
 - **單一類別預測失敗**：runner try/except 包住每類別，manifest 會記 `{"status":"failed","error":...}`；其餘類別正常顯示，前端對應頁顯示「此類別於本次執行失敗」。
 - **執行中重啟**：startup 不會把缺 `finished_at` 的 run 晉升為最新；下次觸發會建立新 run。
 - **磁碟容量**：每 run ≈ 30 MB，`KEEP_RUNS=12` 預設約 360 MB；可調整。

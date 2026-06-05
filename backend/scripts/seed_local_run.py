@@ -27,10 +27,8 @@ logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(mess
 
 def main() -> None:
     base = os.environ.get("DATA_DIR", "./data/forecasts")
-    url = os.environ.get(
-        "DGBAS_URL",
-        "https://ws.dgbas.gov.tw/001/Upload/461/relfile/11525/230543/pr0101a3m.xml",
-    )
+    # 留空＝自動組出最新 SDMX 查詢網址（每月不必手改）。
+    url = os.environ.get("DGBAS_URL", "")
     run_id = storage.new_run_id()
     print(f"starting local run {run_id} → {base}")
     run_full(base, run_id, dgbas_url=url)

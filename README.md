@@ -111,7 +111,7 @@ y_train = df["Food"].dropna().iloc[-144:]
 res = SARIMAX(y_train, order=order, seasonal_order=seasonal_order).fit()
 
 # 3. 用相同 seed 重現模擬路徑
-sim = res.simulate(nsimulations=20, repetitions=10_000, anchor="end", random_state=1)
+sim = res.simulate(nsimulations=18, repetitions=10_000, anchor="end", random_state=1)
 
 # 4. 與網站下載的 Parquet 比對
 website_paths = pd.read_parquet("Food_paths_<run_id>.parquet")

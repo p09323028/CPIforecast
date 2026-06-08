@@ -124,7 +124,7 @@ export default function MethodPage() {
       <Chapter num="04" title="平台輸出">
         <Sub>4.1　月度 CPI 水準</Sub>
         <P>
-          歷史指數（黑線）加上未來 20 個月預測中位數（紫線），以及 95% 預測
+          歷史指數（黑線）加上未來 18 個月預測中位數（紫線），以及 95% 預測
           區間（淡紫帶狀區）。
         </P>
         <Sub>4.2　年度 YoY 滾動預測</Sub>

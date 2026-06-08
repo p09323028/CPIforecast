@@ -11,7 +11,7 @@ log = logging.getLogger(__name__)
 
 TRAIN_YEARS = 12
 TRAIN_MONTHS = TRAIN_YEARS * 12
-N_SIM = 20
+N_SIM = 18
 N_REPS = 10_000
 SEED = 1
 

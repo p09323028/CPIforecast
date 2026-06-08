@@ -74,15 +74,6 @@ def _annual(s: pd.Series, year: int) -> Optional[float]:
     return float((cur.mean() / prev.mean() - 1) * 100)
 
 
-def _hist_avg(s: pd.Series) -> Optional[float]:
-    """所有完整年度的年變動率算術平均。"""
-    years = sorted({int(y) for y in s.index.year})
-    changes = [c for c in (_annual(s, y) for y in years) if c is not None]
-    if not changes:
-        return None
-    return float(sum(changes) / len(changes))
-
-
 def _read_latest_rolling(
     base_dir: str | Path, run_id: str, cat: str, data_end: pd.Timestamp
 ) -> tuple[Optional[float], Optional[float], Optional[float]]:
@@ -141,7 +132,6 @@ def build_report_df(
                 "2023年": _annual(s, 2023),
                 "2024年": _annual(s, 2024),
                 "2025年": _annual(s, 2025),
-                f"歷史平均% ({s.index.min().year}-{s.index.max().year})": _hist_avg(s),
                 f"預測{forecast_year}年下限%": lo,
                 f"預測{forecast_year}年中位數%": mid,
                 f"預測{forecast_year}年上限%": hi,
@@ -259,7 +249,6 @@ def write_xlsx(
         "   - 年變動率：本月指數 / 去年同月指數 − 1（%）",
         "   - 年初至今平均變動率：本年 1 月至本月平均 / 去年同期平均 − 1（%）",
         "   - 年度變動率：當年平均 / 前年平均 − 1（%），需兩年皆有 12 個月完整資料",
-        "   - 歷史平均變動率：所有完整年度之年變動率的算術平均",
         "5. 14 項類別對應主計總處公布之消費者物價基本分類項目。",
     ]
     notes_font = Font(name="Microsoft JhengHei", size=9, color="475569")

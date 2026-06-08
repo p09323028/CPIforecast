@@ -1,0 +1,107 @@
+{
+  "run_id": "2026-06-08T06-51-01Z",
+  "kind": "prices",
+  "started_at": "2026-06-08T06:51:01+00:00",
+  "finished_at": "2026-06-08T06:51:56+00:00",
+  "data_end_date": "2026-04-01",
+  "source_file": "price_template.xlsx",
+  "seed": 1,
+  "n_sim": 18,
+  "repetitions": 10000,
+  "train_months": 144,
+  "library_versions": {
+    "pmdarima": "2.0.4",
+    "statsmodels": "0.14.6",
+    "numpy": "1.26.4",
+    "pandas": "2.2.3",
+    "scipy": "1.13.1"
+  },
+  "n_ok": 2,
+  "n_failed": 0,
+  "items": [
+    {
+      "key": "egg_farm",
+      "zh": "雞蛋產地價格",
+      "unit": "元/台斤",
+      "icon": "🥚"
+    },
+    {
+      "key": "egg_retail",
+      "zh": "雞蛋都市零售價格",
+      "unit": "元/台斤",
+      "icon": "🍳"
+    }
+  ],
+  "categories": {
+    "egg_farm": {
+      "status": "ok",
+      "display_zh": "雞蛋產地價格",
+      "unit": "元/台斤",
+      "icon": "🥚",
+      "order": [
+        0,
+        1,
+        0
+      ],
+      "seasonal_order": [
+        1,
+        0,
+        0,
+        12
+      ],
+      "bic": 698.6278920722676,
+      "train_start": "2014-05-01",
+      "train_end": "2026-04-01",
+      "data_end_date": "2026-04-01",
+      "forecast_months": 18,
+      "forecast_start": "2026-05-01",
+      "forecast_end": "2027-10-01",
+      "prob_rise_next_month": 0.2523,
+      "last_actual_value": 32.1,
+      "next_forecast_date": "2026-05-01",
+      "rolling": {
+        "forecast_year": 2026,
+        "base_actual": 28.0595,
+        "actual_yoy": null,
+        "start_end_date": "2025-12-01",
+        "end_end_date": "2026-11-01",
+        "n_iterations": 12
+      }
+    },
+    "egg_retail": {
+      "status": "ok",
+      "display_zh": "雞蛋都市零售價格",
+      "unit": "元/台斤",
+      "icon": "🍳",
+      "order": [
+        0,
+        1,
+        1
+      ],
+      "seasonal_order": [
+        0,
+        0,
+        0,
+        12
+      ],
+      "bic": 556.2803533445591,
+      "train_start": "2014-05-01",
+      "train_end": "2026-04-01",
+      "data_end_date": "2026-04-01",
+      "forecast_months": 18,
+      "forecast_start": "2026-05-01",
+      "forecast_end": "2027-10-01",
+      "prob_rise_next_month": 0.6194,
+      "last_actual_value": 44.412,
+      "next_forecast_date": "2026-05-01",
+      "rolling": {
+        "forecast_year": 2026,
+        "base_actual": 42.58299999999999,
+        "actual_yoy": null,
+        "start_end_date": "2025-12-01",
+        "end_end_date": "2026-11-01",
+        "n_iterations": 12
+      }
+    }
+  }
+}

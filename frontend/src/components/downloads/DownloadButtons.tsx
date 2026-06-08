@@ -5,38 +5,65 @@ import {
   pathsParquetUrl,
   rawCpiCsvUrl,
 } from "@/api/forecast";
+import {
+  priceMonthlyCsvUrl,
+  priceYoyCsvUrl,
+  priceRollingYoyCsvUrl,
+  pricePathsParquetUrl,
+  priceRawCsvUrl,
+} from "@/api/prices";
 
 export default function DownloadButtons({
   runId,
   category,
+  variant = "cpi",
 }: {
   runId: string;
   category: string;
+  variant?: "cpi" | "price";
 }) {
+  const isPrice = variant === "price";
+  const urls = isPrice
+    ? {
+        monthly: priceMonthlyCsvUrl,
+        rolling: priceRollingYoyCsvUrl,
+        yoy: priceYoyCsvUrl,
+        paths: pricePathsParquetUrl,
+        raw: priceRawCsvUrl,
+      }
+    : {
+        monthly: monthlyCsvUrl,
+        rolling: rollingYoyCsvUrl,
+        yoy: yoyCsvUrl,
+        paths: pathsParquetUrl,
+        raw: rawCpiCsvUrl,
+      };
   const items: { label: string; href: string; note?: string }[] = [
     {
       label: "下載 CSV（月度分位數）",
-      href: monthlyCsvUrl(runId, category),
+      href: urls.monthly(runId, category),
       note: "lower_95 / median / upper_95 + actual",
     },
     {
       label: "下載 CSV（滾動年變動率）",
-      href: rollingYoyCsvUrl(runId, category),
+      href: urls.rolling(runId, category),
       note: "依使用資料截至時點各月份的 YoY 分位數",
     },
     {
       label: "下載 CSV（年度 YoY 摘要）",
-      href: yoyCsvUrl(runId, category),
+      href: urls.yoy(runId, category),
       note: "單一最新 end_date 的年 YoY",
     },
     {
       label: "下載 Parquet（10,000 模擬路徑）",
-      href: pathsParquetUrl(runId, category),
+      href: urls.paths(runId, category),
       note: "DatetimeIndex × 10000 cols",
     },
     {
-      label: "下載 raw_cpi.csv（本次訓練資料）",
-      href: rawCpiCsvUrl(runId),
+      label: isPrice
+        ? "下載 prices.csv（本次訓練資料）"
+        : "下載 raw_cpi.csv（本次訓練資料）",
+      href: urls.raw(runId),
       note: "用此檔配 notebook 重現預測",
     },
   ];

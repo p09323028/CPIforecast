@@ -9,7 +9,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from forecast import storage
 
 from .config import settings
-from .routers import admin, categories, downloads, forecast, health, runs
+from .routers import admin, categories, downloads, forecast, health, prices, runs
 
 logging.basicConfig(
     level=logging.INFO,
@@ -46,6 +46,7 @@ app.include_router(health.router)
 app.include_router(categories.router)
 app.include_router(runs.router)
 app.include_router(forecast.router)
+app.include_router(prices.router)
 app.include_router(downloads.router)
 app.include_router(admin.router)
 

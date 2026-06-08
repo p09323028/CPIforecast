@@ -93,6 +93,10 @@ export interface ForecastPayload {
   next_forecast_date: string | null;
   annual_yoy: AnnualYoy[];
   rolling_yoy: RollingYoy;
+  // 僅價格預測（/api/prices）會帶以下欄位
+  display_zh?: string | null;
+  unit?: string | null;
+  icon?: string | null;
 }
 
 export interface AdminStatus {

@@ -12,15 +12,19 @@ export default function ForecastChart({
   data,
   mode,
   height = 480,
+  seriesLabel = "CPI",
+  yAxisTitle = "CPI 指數（基期 110 年=100）",
 }: {
   data: ForecastPayload;
   mode: Mode;
   height?: number;
+  seriesLabel?: string;
+  yAxisTitle?: string;
 }) {
   const { traces, layout } = useMemo(() => {
-    if (mode === "level") return buildLevelTraces(data);
+    if (mode === "level") return buildLevelTraces(data, seriesLabel, yAxisTitle);
     return buildYoyTraces(data);
-  }, [data, mode]);
+  }, [data, mode, seriesLabel, yAxisTitle]);
 
   const config: Partial<Config> = {
     locale: "zh-TW",
@@ -42,7 +46,11 @@ export default function ForecastChart({
   );
 }
 
-function buildLevelTraces(data: ForecastPayload): {
+function buildLevelTraces(
+  data: ForecastPayload,
+  seriesLabel: string,
+  yAxisTitle: string,
+): {
   traces: Data[];
   layout: Partial<Layout>;
 } {
@@ -63,12 +71,12 @@ function buildLevelTraces(data: ForecastPayload): {
 
   const traces: Data[] = [
     {
-      name: "實際 CPI",
+      name: `實際 ${seriesLabel}`,
       x: histX,
       y: histY,
       mode: "lines",
       line: { color: "#0f172a", width: 2 },
-      hovertemplate: "%{x|%Y-%m}<br>實際 CPI %{y:.2f}<extra></extra>",
+      hovertemplate: `%{x|%Y-%m}<br>實際 ${seriesLabel} %{y:.2f}<extra></extra>`,
       type: "scatter",
     },
     {
@@ -108,7 +116,7 @@ function buildLevelTraces(data: ForecastPayload): {
   const layout: Partial<Layout> = {
     font: { family: FONT },
     xaxis: { type: "date", title: { text: "月份" } },
-    yaxis: { title: { text: "CPI 指數（基期 110 年=100）" } },
+    yaxis: { title: { text: yAxisTitle } },
     // 改用 closest — 每個 trace 獨立顯示，徹底避免邊界 snap 跨範圍
     hovermode: "closest",
     margin: { l: 64, r: 24, t: 24, b: 56 },

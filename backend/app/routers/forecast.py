@@ -23,8 +23,18 @@ def _read_csv(path: Path) -> pd.DataFrame:
 def get_forecast(run_id: str, category: str) -> dict:
     if category not in english_names():
         raise HTTPException(400, f"unknown category: {category}")
+    return build_forecast_payload(settings.DATA_DIR, run_id, category)
+
+
+def build_forecast_payload(base_dir: str, run_id: str, category: str) -> dict:
+    """Assemble the chart/card JSON for one category from a run directory.
+
+    Shared by the CPI forecast route and the (non-CPI) prices route — both
+    write identical output files via `forecast.storage`, so the payload shape
+    is the same. The caller is responsible for validating `category`.
+    """
     try:
-        manifest = storage.read_manifest(settings.DATA_DIR, run_id)
+        manifest = storage.read_manifest(base_dir, run_id)
     except FileNotFoundError:
         raise HTTPException(404, f"run {run_id} not found")
     cat_info = manifest.get("categories", {}).get(category)
@@ -36,10 +46,10 @@ def get_forecast(run_id: str, category: str) -> dict:
             {"detail": "category failed in this run", "error": cat_info.get("error")},
         )
 
-    cdir = storage.category_dir(settings.DATA_DIR, run_id, category)
+    cdir = storage.category_dir(base_dir, run_id, category)
     monthly_df = _read_csv(cdir / storage.MONTHLY_CSV)
     yoy_df = _read_csv(cdir / storage.YOY_CSV)
-    raw_df = _read_csv(storage.run_dir(settings.DATA_DIR, run_id) / storage.RAW_CSV)
+    raw_df = _read_csv(storage.run_dir(base_dir, run_id) / storage.RAW_CSV)
 
     raw_df["date"] = pd.to_datetime(raw_df["date"])
     history = raw_df[["date", category]].dropna()

@@ -5,5 +5,7 @@ __pycache__/
 # 忽略 data/ 內其他暫存，但放行 forecasts 預測結果（要進 repo 供 Render 免費後端讀取）
 data/*
 !data/forecasts/
+!data/forecasts_prices/
+!data/price_inputs/
 *.log
 .pytest_cache/

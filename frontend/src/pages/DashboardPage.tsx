@@ -5,6 +5,8 @@ import { useRun, useLatestRun } from "@/hooks/useRuns";
 import { useCategories } from "@/hooks/useCategories";
 import { getForecast, reportXlsxUrl } from "@/api/forecast";
 import CategoryCard from "@/components/cards/CategoryCard";
+import PriceCard from "@/components/cards/PriceCard";
+import { usePriceCategories, usePriceLatestRun } from "@/hooks/usePrices";
 import EmptyState from "@/components/feedback/EmptyState";
 import { CardSkeleton } from "@/components/feedback/LoadingSkeleton";
 import { fmtDateTime } from "@/lib/format";
@@ -15,6 +17,9 @@ export default function DashboardPage() {
   const latest = useLatestRun();
   const { data: manifest } = useRun(runId);
   const { data: categories } = useCategories();
+  const priceLatest = usePriceLatestRun();
+  const { data: priceCategories } = usePriceCategories();
+  const priceRunId = priceLatest.data?.run_id;
   const qc = useQueryClient();
 
   useEffect(() => {
@@ -92,6 +97,23 @@ export default function DashboardPage() {
           ))}
         </div>
       </section>
+
+      {priceRunId && priceCategories && priceCategories.length > 0 && (
+        <section>
+          <h2 className="text-sm font-medium text-slate-600 mb-1">
+            價格預測（實際價格，非指數）
+          </h2>
+          <p className="text-xs text-slate-400 mb-3">
+            與 CPI 相同模型（SARIMA + 10,000 條蒙地卡羅，未來 18 個月）。
+            年變動率＝當年平均價 ÷ 前年平均價 − 1。
+          </p>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+            {priceCategories.map((item) => (
+              <PriceCard key={item.en} runId={priceRunId} item={item} />
+            ))}
+          </div>
+        </section>
+      )}
     </div>
   );
 }

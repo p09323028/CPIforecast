@@ -10,6 +10,8 @@ class Settings(BaseSettings):
     # 只有要覆蓋來源時才填整段 SDMX URL。
     DGBAS_URL: str = ""
     DATA_DIR: str = "./data/forecasts"
+    # 非 CPI 的「實際價格」預測（例：雞蛋產地價格），與 CPI 分開存放。
+    PRICES_DATA_DIR: str = "./data/forecasts_prices"
     KEEP_RUNS: int = 12
 
     model_config = SettingsConfigDict(env_file=".env", extra="ignore")

@@ -1,6 +1,6 @@
 import { Link, useSearchParams } from "react-router-dom";
 import { useForecast } from "@/hooks/useForecast";
-import { fmtNum, fmtPct } from "@/lib/format";
+import { fmtNum, fmtPct, fmtMonth } from "@/lib/format";
 import { zh, icon } from "@/lib/categories";
 
 export default function CategoryCard({
@@ -42,13 +42,19 @@ function CardBody({ data }: { data: NonNullable<ReturnType<typeof useForecast>["
   return (
     <div className="grid grid-cols-2 gap-2 text-xs">
       <div>
-        <div className="text-slate-400">最新實際</div>
+        <div className="text-slate-400">
+          最新實際{lastActual ? `(${fmtMonth(lastActual.date)})` : ""}
+        </div>
         <div className="text-slate-800 font-medium">
           {fmtNum(lastActual?.value)}
         </div>
       </div>
       <div>
-        <div className="text-slate-400">下個月中位數</div>
+        <div className="text-slate-400">
+          下個月{nextMonth ? `(${fmtMonth(nextMonth.date)})` : ""}
+          <br />
+          預測中位數
+        </div>
         <div className="text-slate-800 font-medium">
           {fmtNum(nextMonth?.median)}
         </div>

@@ -166,6 +166,11 @@ git push                                   # Render 偵測到 push 會自動重�
 
 ## 授權與致謝
 
+The source code in this repository is licensed under the MIT License.
+Unless otherwise stated, processed data, charts, and forecast outputs are made available under the Creative Commons Attribution 4.0 International License (CC BY 4.0) / Taiwan Open Government Data License.
+Input data may be subject to the terms and conditions of the original data providers.
+The forecasts and analyses are provided for research and informational purposes only. They do not constitute official price forecasts or policy commitments.
+
 - 資料來源：行政院主計總處消費者物價指數資料庫
 - 模型方法：USDA TB-1957報告 (SARIMA + 蒙地卡羅模擬)
 - 參考文獻：

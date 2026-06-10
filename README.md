@@ -166,6 +166,9 @@ git push                                   # Render 偵測到 push 會自動重�
 
 ## 授權與致謝
 
-- 原始預測流程：`CPIforecast.ipynb`（使用者實作）
-- 模型方法：USDA TB-1957 SARIMA 配適
-- 資料來源：行政院主計總處 dataset 6019
+- 資料來源：行政院主計總處消費者物價指數資料庫
+- 模型方法：USDA TB-1957報告 (SARIMA + 蒙地卡羅模擬)
+- 參考文獻：
+  - U.S. Department of Agriculture (USDA), Economic Research Service (ERS). Food Price Outlook.
+  - 吳金擇, 《論如何預測我國食物類消費者物價指數年增率》, 農業部統計處
+

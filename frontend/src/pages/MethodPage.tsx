@@ -197,7 +197,7 @@ function Hero() {
         Methodology
       </p>
       <h1 className="font-serif text-4xl sm:text-5xl font-bold text-slate-900 leading-tight tracking-tight mb-8">
-        CPI 預測平台
+        食品類物價(指數)預測平台
         <br />
         方法說明
       </h1>

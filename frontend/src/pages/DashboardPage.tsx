@@ -59,7 +59,7 @@ export default function DashboardPage() {
       <section className="rounded-lg border border-slate-200 bg-white p-5">
         <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3">
           <h1 className="text-xl font-semibold text-slate-900">
-            台灣 CPI 預測（14 類別）
+            台灣食品類物價(指數)預測
           </h1>
           <a
             href={reportXlsxUrl(runId)}

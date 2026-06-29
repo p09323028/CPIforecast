@@ -14,7 +14,7 @@ export default function TopBar() {
     <header className="border-b border-slate-200 bg-white sticky top-0 z-10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 h-14 flex items-center gap-4">
         <Link to={`/${search}`} className="font-bold text-lg text-slate-900">
-          CPI 預測平台
+          食品類物價(指數)預測平台
         </Link>
         <nav className="flex items-center gap-1 text-sm">
           {links.map((l) => (

@@ -1,0 +1,457 @@
+{
+  "run_id": "2026-08-10T08-30-30Z",
+  "started_at": "2026-08-10T08:30:30+00:00",
+  "finished_at": "2026-08-10T08:48:36+00:00",
+  "data_end_date": "2026-07-01",
+  "dgbas_url": "https://nstatdb.dgbas.gov.tw/dgbasAll/webMain.aspx?sdmx/A030101025/2+16+18+20+23+29+30+32+59+113+141+142+146+179...M.&startTime=1981-M1&endTime=2026-M12",
+  "fetched_at": "2026-08-10T08:30:31+00:00",
+  "seed": 1,
+  "n_sim": 18,
+  "repetitions": 10000,
+  "train_months": 144,
+  "library_versions": {
+    "pmdarima": "2.0.4",
+    "statsmodels": "0.14.6",
+    "numpy": "1.26.4",
+    "pandas": "2.2.3",
+    "scipy": "1.13.1"
+  },
+  "n_ok": 14,
+  "n_failed": 0,
+  "categories": {
+    "Food": {
+      "status": "ok",
+      "order": [
+        0,
+        1,
+        2
+      ],
+      "seasonal_order": [
+        1,
+        0,
+        1,
+        12
+      ],
+      "bic": 400.82437750126576,
+      "train_start": "2014-08-01",
+      "train_end": "2026-07-01",
+      "forecast_months": 18,
+      "forecast_start": "2026-08-01",
+      "forecast_end": "2028-01-01",
+      "prob_rise_next_month": 0.9448,
+      "last_actual_value": 119.31,
+      "next_forecast_date": "2026-08-01",
+      "rolling": {
+        "forecast_year": 2026,
+        "base_actual": 117.41583333333335,
+        "actual_yoy": null,
+        "start_end_date": "2025-12-01",
+        "end_end_date": "2026-11-01",
+        "n_iterations": 12
+      }
+    },
+    "FAFH": {
+      "status": "ok",
+      "order": [
+        0,
+        2,
+        1
+      ],
+      "seasonal_order": [
+        1,
+        0,
+        1,
+        12
+      ],
+      "bic": -92.24249272349728,
+      "train_start": "2014-08-01",
+      "train_end": "2026-07-01",
+      "forecast_months": 18,
+      "forecast_start": "2026-08-01",
+      "forecast_end": "2028-01-01",
+      "prob_rise_next_month": 0.986,
+      "last_actual_value": 121.5,
+      "next_forecast_date": "2026-08-01",
+      "rolling": {
+        "forecast_year": 2026,
+        "base_actual": 117.6175,
+        "actual_yoy": null,
+        "start_end_date": "2025-12-01",
+        "end_end_date": "2026-11-01",
+        "n_iterations": 12
+      }
+    },
+    "meats": {
+      "status": "ok",
+      "order": [
+        2,
+        2,
+        1
+      ],
+      "seasonal_order": [
+        0,
+        0,
+        0,
+        12
+      ],
+      "bic": 295.88476345555574,
+      "train_start": "2014-08-01",
+      "train_end": "2026-07-01",
+      "forecast_months": 18,
+      "forecast_start": "2026-08-01",
+      "forecast_end": "2028-01-01",
+      "prob_rise_next_month": 0.6862,
+      "last_actual_value": 124.25,
+      "next_forecast_date": "2026-08-01",
+      "rolling": {
+        "forecast_year": 2026,
+        "base_actual": 120.53416666666669,
+        "actual_yoy": null,
+        "start_end_date": "2025-12-01",
+        "end_end_date": "2026-11-01",
+        "n_iterations": 12
+      }
+    },
+    "pork": {
+      "status": "ok",
+      "order": [
+        0,
+        1,
+        0
+      ],
+      "seasonal_order": [
+        1,
+        0,
+        1,
+        12
+      ],
+      "bic": 460.88905849045517,
+      "train_start": "2014-08-01",
+      "train_end": "2026-07-01",
+      "forecast_months": 18,
+      "forecast_start": "2026-08-01",
+      "forecast_end": "2028-01-01",
+      "prob_rise_next_month": 0.7794,
+      "last_actual_value": 131.71,
+      "next_forecast_date": "2026-08-01",
+      "rolling": {
+        "forecast_year": 2026,
+        "base_actual": 127.85166666666667,
+        "actual_yoy": null,
+        "start_end_date": "2025-12-01",
+        "end_end_date": "2026-11-01",
+        "n_iterations": 12
+      }
+    },
+    "beef": {
+      "status": "ok",
+      "order": [
+        0,
+        1,
+        0
+      ],
+      "seasonal_order": [
+        0,
+        0,
+        0,
+        12
+      ],
+      "bic": 308.59402050133156,
+      "train_start": "2014-08-01",
+      "train_end": "2026-07-01",
+      "forecast_months": 18,
+      "forecast_start": "2026-08-01",
+      "forecast_end": "2028-01-01",
+      "prob_rise_next_month": 0.6816,
+      "last_actual_value": 127.84,
+      "next_forecast_date": "2026-08-01",
+      "rolling": {
+        "forecast_year": 2026,
+        "base_actual": 120.94833333333334,
+        "actual_yoy": null,
+        "start_end_date": "2025-12-01",
+        "end_end_date": "2026-11-01",
+        "n_iterations": 12
+      }
+    },
+    "poultry": {
+      "status": "ok",
+      "order": [
+        0,
+        1,
+        1
+      ],
+      "seasonal_order": [
+        0,
+        0,
+        0,
+        12
+      ],
+      "bic": 399.74861225229256,
+      "train_start": "2014-08-01",
+      "train_end": "2026-07-01",
+      "forecast_months": 18,
+      "forecast_start": "2026-08-01",
+      "forecast_end": "2028-01-01",
+      "prob_rise_next_month": 0.5296,
+      "last_actual_value": 115.54,
+      "next_forecast_date": "2026-08-01",
+      "rolling": {
+        "forecast_year": 2026,
+        "base_actual": 113.57583333333332,
+        "actual_yoy": null,
+        "start_end_date": "2025-12-01",
+        "end_end_date": "2026-11-01",
+        "n_iterations": 12
+      }
+    },
+    "seafood": {
+      "status": "ok",
+      "order": [
+        0,
+        1,
+        1
+      ],
+      "seasonal_order": [
+        1,
+        0,
+        1,
+        12
+      ],
+      "bic": 412.76112413773285,
+      "train_start": "2014-08-01",
+      "train_end": "2026-07-01",
+      "forecast_months": 18,
+      "forecast_start": "2026-08-01",
+      "forecast_end": "2028-01-01",
+      "prob_rise_next_month": 0.5644,
+      "last_actual_value": 120.2,
+      "next_forecast_date": "2026-08-01",
+      "rolling": {
+        "forecast_year": 2026,
+        "base_actual": 115.90583333333335,
+        "actual_yoy": null,
+        "start_end_date": "2025-12-01",
+        "end_end_date": "2026-11-01",
+        "n_iterations": 12
+      }
+    },
+    "eggs": {
+      "status": "ok",
+      "order": [
+        0,
+        1,
+        0
+      ],
+      "seasonal_order": [
+        1,
+        0,
+        1,
+        12
+      ],
+      "bic": 876.0496637194593,
+      "train_start": "2014-08-01",
+      "train_end": "2026-07-01",
+      "forecast_months": 18,
+      "forecast_start": "2026-08-01",
+      "forecast_end": "2028-01-01",
+      "prob_rise_next_month": 0.8029,
+      "last_actual_value": 121.57,
+      "next_forecast_date": "2026-08-01",
+      "rolling": {
+        "forecast_year": 2026,
+        "base_actual": 114.88749999999999,
+        "actual_yoy": null,
+        "start_end_date": "2025-12-01",
+        "end_end_date": "2026-11-01",
+        "n_iterations": 12
+      }
+    },
+    "egg": {
+      "status": "ok",
+      "order": [
+        0,
+        1,
+        0
+      ],
+      "seasonal_order": [
+        1,
+        0,
+        1,
+        12
+      ],
+      "bic": 927.9515476503707,
+      "train_start": "2014-08-01",
+      "train_end": "2026-07-01",
+      "forecast_months": 18,
+      "forecast_start": "2026-08-01",
+      "forecast_end": "2028-01-01",
+      "prob_rise_next_month": 0.7911,
+      "last_actual_value": 120.49,
+      "next_forecast_date": "2026-08-01",
+      "rolling": {
+        "forecast_year": 2026,
+        "base_actual": 112.68583333333333,
+        "actual_yoy": null,
+        "start_end_date": "2025-12-01",
+        "end_end_date": "2026-11-01",
+        "n_iterations": 12
+      }
+    },
+    "dairy": {
+      "status": "ok",
+      "order": [
+        2,
+        1,
+        0
+      ],
+      "seasonal_order": [
+        1,
+        0,
+        1,
+        12
+      ],
+      "bic": 283.51292513802554,
+      "train_start": "2014-08-01",
+      "train_end": "2026-07-01",
+      "forecast_months": 18,
+      "forecast_start": "2026-08-01",
+      "forecast_end": "2028-01-01",
+      "prob_rise_next_month": 0.4879,
+      "last_actual_value": 104.75,
+      "next_forecast_date": "2026-08-01",
+      "rolling": {
+        "forecast_year": 2026,
+        "base_actual": 104.35083333333331,
+        "actual_yoy": null,
+        "start_end_date": "2025-12-01",
+        "end_end_date": "2026-11-01",
+        "n_iterations": 12
+      }
+    },
+    "milk": {
+      "status": "ok",
+      "order": [
+        0,
+        1,
+        0
+      ],
+      "seasonal_order": [
+        1,
+        0,
+        1,
+        12
+      ],
+      "bic": 459.2630197878416,
+      "train_start": "2014-08-01",
+      "train_end": "2026-07-01",
+      "forecast_months": 18,
+      "forecast_start": "2026-08-01",
+      "forecast_end": "2028-01-01",
+      "prob_rise_next_month": 0.6567,
+      "last_actual_value": 103.0,
+      "next_forecast_date": "2026-08-01",
+      "rolling": {
+        "forecast_year": 2026,
+        "base_actual": 102.89500000000002,
+        "actual_yoy": null,
+        "start_end_date": "2025-12-01",
+        "end_end_date": "2026-11-01",
+        "n_iterations": 12
+      }
+    },
+    "vegetable": {
+      "status": "ok",
+      "order": [
+        2,
+        1,
+        1
+      ],
+      "seasonal_order": [
+        1,
+        0,
+        1,
+        12
+      ],
+      "bic": 1060.5039965774579,
+      "train_start": "2014-08-01",
+      "train_end": "2026-07-01",
+      "forecast_months": 18,
+      "forecast_start": "2026-08-01",
+      "forecast_end": "2028-01-01",
+      "prob_rise_next_month": 0.9249,
+      "last_actual_value": 119.43,
+      "next_forecast_date": "2026-08-01",
+      "rolling": {
+        "forecast_year": 2026,
+        "base_actual": 113.09916666666665,
+        "actual_yoy": null,
+        "start_end_date": "2025-12-01",
+        "end_end_date": "2026-11-01",
+        "n_iterations": 12
+      }
+    },
+    "fruit": {
+      "status": "ok",
+      "order": [
+        0,
+        1,
+        1
+      ],
+      "seasonal_order": [
+        0,
+        0,
+        0,
+        12
+      ],
+      "bic": 871.1391610507038,
+      "train_start": "2014-08-01",
+      "train_end": "2026-07-01",
+      "forecast_months": 18,
+      "forecast_start": "2026-08-01",
+      "forecast_end": "2028-01-01",
+      "prob_rise_next_month": 0.6275,
+      "last_actual_value": 118.84,
+      "next_forecast_date": "2026-08-01",
+      "rolling": {
+        "forecast_year": 2026,
+        "base_actual": 138.08666666666667,
+        "actual_yoy": null,
+        "start_end_date": "2025-12-01",
+        "end_end_date": "2026-11-01",
+        "n_iterations": 12
+      }
+    },
+    "oils": {
+      "status": "ok",
+      "order": [
+        0,
+        1,
+        0
+      ],
+      "seasonal_order": [
+        1,
+        0,
+        2,
+        12
+      ],
+      "bic": 427.9609670513284,
+      "train_start": "2014-08-01",
+      "train_end": "2026-07-01",
+      "forecast_months": 18,
+      "forecast_start": "2026-08-01",
+      "forecast_end": "2028-01-01",
+      "prob_rise_next_month": 0.2079,
+      "last_actual_value": 121.04,
+      "next_forecast_date": "2026-08-01",
+      "rolling": {
+        "forecast_year": 2026,
+        "base_actual": 120.02083333333331,
+        "actual_yoy": null,
+        "start_end_date": "2025-12-01",
+        "end_end_date": "2026-11-01",
+        "n_iterations": 12
+      }
+    }
+  }
+}
